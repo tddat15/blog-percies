@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model blog {
+  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  title       String    @db.VarChar
+  description String?   @db.VarChar
+  author      String?   @db.VarChar(150)
+  created_at  DateTime  @default(now()) @db.Timestamptz(6)
+  content     String
+  updated_at  DateTime? @db.Timestamptz(6)
+}
+
+model key_item {
+  key_group  String   @db.VarChar(25)
+  key_code   String   @db.VarChar(100)
+  key_value  String?  @db.VarChar(255)
+  comment    String?  @db.VarChar
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+
+  @@id([key_group, key_code])
+}
+
+model user {
+  id       String @id(map: "pk_user") @default(dbgenerated("uuid_generate_v4()")) @map("id") @db.Uuid
+  username String @unique @map("username") @db.VarChar(50)
+  email    String @unique @map("email") @db.VarChar()
+}

@@ -1,0 +1,24 @@
+{
+  "saveAndRunExt": {
+    "commands": [
+      {
+        "match": "\\.(css$|js$|html$)",
+        "isShellCommand": false,
+        "cmd": "workbench.action.debug.restart"
+      }
+    ]
+  },
+  "files.exclude": {
+    "node_modules/": true,
+    "bin": true,
+    "dist": true,
+    "public": true,
+    ".build": true,
+    ".husky": true,
+    ".dev": true,
+    ".ebextensions": true,
+    ".elasticbeanstalk": true
+  },
+  "files.eol": "\r\n",
+  "cSpell.words": ["Percies", "typeorm"]
+}
