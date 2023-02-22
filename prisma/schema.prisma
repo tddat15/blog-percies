@@ -5,19 +5,22 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model blog {
-  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+model Blog {
+  id          String    @id(map: "pk_identity") @default(dbgenerated("uuid_generate_v4()")) @map("id") @db.Uuid
   title       String    @db.VarChar
   description String?   @db.VarChar
   author      String?   @db.VarChar(150)
   created_at  DateTime  @default(now()) @db.Timestamptz(6)
   content     String
   updated_at  DateTime? @db.Timestamptz(6)
+
+  @@map("blog")
 }
 
-model key_item {
+model KeyItem {
   key_group  String   @db.VarChar(25)
   key_code   String   @db.VarChar(100)
   key_value  String?  @db.VarChar(255)
@@ -25,10 +28,14 @@ model key_item {
   created_at DateTime @default(now()) @db.Timestamptz(6)
 
   @@id([key_group, key_code])
+  @@map("key_item")
 }
 
-model user {
+model User {
   id       String @id(map: "pk_user") @default(dbgenerated("uuid_generate_v4()")) @map("id") @db.Uuid
   username String @unique @map("username") @db.VarChar(50)
-  email    String @unique @map("email") @db.VarChar()
+  email    String @unique @map("email") @db.VarChar
+  password String @map("password") @db.VarChar(50)
+
+  @@map("user")
 }

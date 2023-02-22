@@ -1,2 +1,2 @@
-export * from './user.controller';
-export * from './users.module';
+export * from './application';
+export { UserModule } from './users.module';

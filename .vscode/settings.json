@@ -1,13 +1,19 @@
 {
-  "saveAndRunExt": {
-    "commands": [
-      {
-        "match": "\\.(css$|js$|html$)",
-        "isShellCommand": false,
-        "cmd": "workbench.action.debug.restart"
-      }
-    ]
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "all",
+  "editor.formatOnSave": true,
   "files.exclude": {
     "node_modules/": true,
     "bin": true,
@@ -20,5 +26,6 @@
     ".elasticbeanstalk": true
   },
   "files.eol": "\r\n",
-  "cSpell.words": ["Percies", "typeorm"]
+  "cSpell.words": ["Percies", "typeorm"],
+  "typescript.preferences.importModuleSpecifier": "shortest"
 }

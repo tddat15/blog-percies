@@ -19,17 +19,22 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prisma:g": "prisma generate",
-    "prisma:m": "prisma migrate dev"
-
+    "prisma:g": "npx prisma generate",
+    "prisma:m": "npx prisma migrate dev"
   },
   "dependencies": {
+    "@brakebein/prisma-generator-nestjs-dto": "^1.17.2",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.0.0",
     "@nestjs/passport": "^9.0.3",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.2.1",
     "@prisma/client": "^4.10.1",
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
+    "class-validator": "^0.14.0",
+    "jsonwebtoken": "^9.0.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
