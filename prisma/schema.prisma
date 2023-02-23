@@ -8,6 +8,25 @@ datasource db {
   // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
+// generator nestjsDto {
+//   provider                        = "prisma-generator-nestjs-dto"
+//   output                          = "../src/generated"
+//   outputToNestJsResourceStructure = "false"
+//   flatResourceStructure           = "false"
+//   exportRelationModifierClasses   = "true"
+//   reExport                        = "true"
+//   createDtoPrefix                 = "Create"
+//   updateDtoPrefix                 = "Update"
+//   dtoSuffix                       = "Dto"
+//   entityPrefix                    = ""
+//   entitySuffix                    = "Entity"
+//   classValidation                 = "true"
+//   fileNamingStyle                 = "kebab"
+//   noDependencies                  = "false"
+//   outputType                      = "class"
+//   prettier                        = "true"
+// }
+
 model Blog {
   id          String    @id(map: "pk_identity") @default(dbgenerated("uuid_generate_v4()")) @map("id") @db.Uuid
   title       String    @db.VarChar

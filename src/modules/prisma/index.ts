@@ -1,2 +1,2 @@
-export * from './prisma.module';
 export * from './prisma';
+export * from './prisma.module';
