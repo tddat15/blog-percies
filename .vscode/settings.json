@@ -26,6 +26,6 @@
     ".elasticbeanstalk": true
   },
   "files.eol": "\r\n",
-  "cSpell.words": ["Percies", "typeorm"],
+  "cSpell.words": ["datasources", "Percies", "typeorm"],
   "typescript.preferences.importModuleSpecifier": "shortest"
 }

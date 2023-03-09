@@ -22,12 +22,14 @@ export const appConfig = registerAs('app', () => ({
 export class AppConfig {
   public readonly port: number;
   public readonly env: string;
+  public readonly jwtSecret: string;
 
   constructor(
     @Inject(appConfig.KEY)
     config: ConfigType<typeof appConfig>,
   ) {
     this.port = Number(config.port);
-    this.env = config.env;
+    this.env = config.env!;
+    this.jwtSecret = config.jwtSecret!;
   }
 }

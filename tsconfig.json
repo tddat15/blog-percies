@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "watch": true,
     "paths": {
-      "@db": ["src/prisma"]
+      "@db": ["src/prisma/"]
     }
   }
 }
