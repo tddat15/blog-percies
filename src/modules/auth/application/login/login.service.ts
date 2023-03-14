@@ -16,7 +16,7 @@ export class LoginService {
     private configService: ConfigService,
   ) {}
 
-  public async login(option: LoginRequestBody): Promise<string> {
+  public async login(option: LoginRequestBody): Promise<{ accessToken: string }> {
     const { password, username } = option;
 
     const user = await this.dbContext.user.findUnique({
@@ -36,24 +36,24 @@ export class LoginService {
     }
     console.log(user.id, user.email);
 
-    const token = await this.convertToJwtString(user.id, user.email);
+    const token = await this.signJwtToken(user.id, user.email);
 
     return token;
   }
 
-  async convertToJwtString(userId: string, email: string): Promise<string> {
+  async signJwtToken(userId: string, email: string): Promise<{ accessToken: string }> {
     const payload = {
       sub: userId,
       email,
     };
 
-    const a = this.configService.get('JWT_SECRET');
-
-    console.log(a);
-
-    return this.jwtService.signAsync(payload, {
+    const jwtString = await this.jwtService.signAsync(payload, {
       expiresIn: '10m',
-      secret: a,
+      secret: this.configService.get('JWT_SECRET'),
     });
+
+    return {
+      accessToken: jwtString,
+    };
   }
 }

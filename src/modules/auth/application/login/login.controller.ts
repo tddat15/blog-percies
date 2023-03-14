@@ -7,10 +7,10 @@ import { LoginService } from './login.service';
 @ApiTags('Auth')
 @Controller('login')
 export class CreateUserController {
-  constructor(private readonly LoginRequestBody: LoginService) {}
+  constructor(private readonly loginRequestBody: LoginService) {}
 
   @Post()
   async post(@Body() option: LoginRequestBody) {
-    return await this.LoginRequestBody.login(option);
+    return await this.loginRequestBody.login(option);
   }
 }

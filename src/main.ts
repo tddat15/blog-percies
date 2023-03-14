@@ -8,7 +8,7 @@ async function bootstrap() {
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
-  const config = new DocumentBuilder().setTitle('Percies Blog Api').setVersion('1.0').build();
+  const config = new DocumentBuilder().setTitle('Percies Blog Api').setVersion('1.0').addBearerAuth().build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('percies-blog', app, document);
